@@ -328,7 +328,6 @@ class Arr implements ArrayDataObject
         }
     }
 
-
     /**
      * @inheritDoc
      * @throws ToolResolutionException
