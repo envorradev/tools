@@ -1,0 +1,13 @@
+{
+    "name": "envorradev/tool-flags",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "envorradev/tool-common": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envorra\\Tools\\Flags\\": "src/"
+        }
+    }
+}

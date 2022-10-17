@@ -1,0 +1,43 @@
+{
+    "name": "envorradev/tools",
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "ramsey/composer-repl": "^1.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Envorra\\Tools\\": "src/",
+            "Envorra\\Tools\\Common\\": "src/Common/src/",
+            "Envorra\\Tools\\Flags\\": "src/Flags/src/",
+            "Envorra\\Tools\\Arrays\\": "src/Arrays/src/",
+            "Envorra\\Tools\\Maps\\": "src/Maps/src/",
+            "Envorra\\Tools\\Filesystem\\": "src/Filesystem/src/",
+            "Envorra\\Tools\\Composer\\": "src/Composer/src/",
+            "Envorra\\Tools\\Json\\": "src/Json/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Envorra\\Tools\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam Taylor",
+            "email": "15961687+samueljtaylor@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "ramsey/composer-repl": true
+        }
+    }
+}

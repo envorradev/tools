@@ -1,0 +1,21 @@
+{
+    "name": "envorradev/tool-filesystem",
+    "require": {
+        "php": "^8.1",
+        "envorradev/tool-common": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envorra\\Tools\\Filesystem\\": "src/"
+        }
+    },
+    "extra": {
+        "tool-resolver": {
+            "relative": true,
+            "resolves": {
+                "Contracts\\Filesystem\\FileObject": "File",
+                "Contracts\\Filesystem\\PathObject": "Path"
+            }
+        }
+    }
+}

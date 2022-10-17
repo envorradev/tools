@@ -1,0 +1,14 @@
+{
+    "name": "envorradev/tool-composer",
+    "require": {
+        "php": "^8.1",
+        "envorradev/tool-common": "dev-master",
+        "envorradev/tool-filesystem": "dev-master",
+        "envorradev/tool-json": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envorra\\Tools\\Composer\\": "src/"
+        }
+    }
+}

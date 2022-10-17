@@ -1,0 +1,22 @@
+{
+    "name": "envorradev/tool-json",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "envorradev/tool-common": "dev-master",
+        "envorradev/tool-arrays": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envorra\\Tools\\Json\\": "src/"
+        }
+    },
+    "extra": {
+        "tool-resolver": {
+            "relative": true,
+            "resolves": {
+                "Contracts\\Json\\JsonDataObject": "Json"
+            }
+        }
+    }
+}
