@@ -1,14 +1,23 @@
 {
     "name": "envorradev/tool-filesystem",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.1",
-        "envorradev/tool-common": "dev-master"
+        "envorradev/tool-common": "self.version"
     },
     "autoload": {
         "psr-4": {
             "Envorra\\Tools\\Filesystem\\": "src/"
         }
     },
+    "authors": [
+        {
+            "name": "Sam Taylor",
+            "email": "15961687+samueljtaylor@users.noreply.github.com"
+        }
+    ],
     "extra": {
         "tool-resolver": {
             "relative": true,

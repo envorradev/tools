@@ -1,5 +1,8 @@
 {
     "name": "envorradev/tool-common",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.1"
     },
@@ -7,5 +10,11 @@
         "psr-4": {
             "Envorra\\Tools\\Common\\": "src/"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "Sam Taylor",
+            "email": "15961687+samueljtaylor@users.noreply.github.com"
+        }
+    ]
 }

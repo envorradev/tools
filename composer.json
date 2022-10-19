@@ -1,23 +1,25 @@
 {
     "name": "envorradev/tools",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../git-helper"
-        }
-    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.1"
     },
     "require-dev": {
         "ramsey/composer-repl": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "envorradev/git-helper": "dev-main"
+        "envorradev/git-helper": "^0.1"
+    },
+    "replace": {
+        "envorradev/tool-arrays": "self.version",
+        "envorradev/tool-common": "self.version",
+        "envorradev/tool-composer": "self.version",
+        "envorradev/tool-filesystem": "self.version",
+        "envorradev/tool-flags": "self.version",
+        "envorradev/tool-json": "self.version"
     },
     "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-4": {
             "Envorra\\Tools\\": "src/",
             "Envorra\\Tools\\Common\\": "src/Common/src/",
@@ -33,17 +35,20 @@
             "Envorra\\Tools\\Tests\\": "tests/"
         }
     },
-    "license": "MIT",
     "authors": [
         {
             "name": "Sam Taylor",
             "email": "15961687+samueljtaylor@users.noreply.github.com"
         }
     ],
-    "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
             "ramsey/composer-repl": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "dev-main"
         }
     }
 }
