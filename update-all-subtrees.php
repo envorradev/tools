@@ -16,4 +16,4 @@ $routine = new UpdateAllSubtreesRoutine(
     ]
 );
 
-$routine->run();
+$routine->pushTags()->run();

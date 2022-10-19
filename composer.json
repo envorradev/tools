@@ -9,7 +9,7 @@
     "require-dev": {
         "ramsey/composer-repl": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "envorradev/git-helper": "^0.1"
+        "envorradev/git-helper": "^0.1.1"
     },
     "replace": {
         "envorradev/tool-arrays": "self.version",
