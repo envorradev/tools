@@ -30,14 +30,14 @@ class Flag implements BitwiseFlag
         $value = $this->value;
         $names = $this->name ? [$this->name] : [];
 
-        foreach($flags as $flag) {
-            if($flag instanceof self) {
-                if($flag->name) {
+        foreach ($flags as $flag) {
+            if ($flag instanceof self) {
+                if ($flag->name) {
                     $names[] = $flag->name;
                 }
             }
 
-            if($flag instanceof FlagContract) {
+            if ($flag instanceof FlagContract) {
                 $flag = $flag->value;
             }
 
@@ -46,8 +46,6 @@ class Flag implements BitwiseFlag
 
         return new CombinedFlag($value, $names, $this->class);
     }
-
-
 
 
 }

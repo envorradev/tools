@@ -9,7 +9,7 @@ use IteratorAggregate;
 /**
  * AccessibleAsArray
  *
- * @package Envorra\Tools\Common\Contracts\Arrays
+ * @package  Envorra\Tools\Common\Contracts\Arrays
  *
  * @template TKey of array-key
  * @template TValue

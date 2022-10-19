@@ -29,18 +29,18 @@ class CombinedFlag implements BitwiseCombinedFlag
         $value = $this->value;
         $names = $this->names;
 
-        foreach($flags as $flag) {
-            if($flag instanceof self) {
+        foreach ($flags as $flag) {
+            if ($flag instanceof self) {
                 $names = array_merge($names, $flag->names);
             }
 
-            if($flag instanceof Flag) {
-                if($flag->name) {
+            if ($flag instanceof Flag) {
+                if ($flag->name) {
                     $names[] = $flag->name;
                 }
             }
 
-            if($flag instanceof FlagContract) {
+            if ($flag instanceof FlagContract) {
                 $flag = $flag->value;
             }
 

@@ -5,16 +5,16 @@ namespace Envorra\Tools\Common\Contracts;
 /**
  * DataObject
  *
- * @package Envorra\Tools\Common\Contracts
+ * @package  Envorra\Tools\Common\Contracts
  *
  * @template T
  */
 interface DataObject
 {
     /**
-     * @return static<T>
+     * @return T
      */
-    public function reset(): static;
+    public function getOriginal(): mixed;
 
     /**
      * @return bool
@@ -22,7 +22,7 @@ interface DataObject
     public function hasChanged(): bool;
 
     /**
-     * @return T
+     * @return static<T>
      */
-    public function getOriginal(): mixed;
+    public function reset(): static;
 }

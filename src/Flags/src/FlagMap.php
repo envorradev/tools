@@ -21,14 +21,6 @@ class FlagMap implements Map
 
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function map(): array
-    {
-        return $this->map;
-    }
-
     public static function fromClass(object|string $class): self
     {
         $flags = [];
@@ -39,11 +31,19 @@ class FlagMap implements Map
             return new self();
         }
 
-        foreach($reflection->getReflectionConstants() as $constant) {
+        foreach ($reflection->getReflectionConstants() as $constant) {
             $name = $constant->getName();
             $flags[$name] = new Flag($constant->getValue(), $name, $reflection->getName());
         }
 
         return new self($flags);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function map(): array
+    {
+        return $this->map;
     }
 }

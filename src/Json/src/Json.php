@@ -55,15 +55,6 @@ class Json implements JsonDataObject, AccessibleAsArray
 
     /**
      * @inheritDoc
-     * @throws ToolResolutionException
-     */
-    public function toArrayObject(): ArrayDataObject
-    {
-        return $this->resolver->resolve(ArrayDataObject::class)::make($this->data);
-    }
-
-    /**
-     * @inheritDoc
      */
     public static function make(mixed $data): static
     {
@@ -284,6 +275,15 @@ class Json implements JsonDataObject, AccessibleAsArray
     public function toArray(): array
     {
         return (array) json_decode($this->json, true);
+    }
+
+    /**
+     * @inheritDoc
+     * @throws ToolResolutionException
+     */
+    public function toArrayObject(): ArrayDataObject
+    {
+        return $this->resolver->resolve(ArrayDataObject::class)::make($this->data);
     }
 
     /**

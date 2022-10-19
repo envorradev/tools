@@ -22,7 +22,7 @@ class ToolPackage extends AbstractComposerPackage
     {
         parent::__construct($file);
 
-        if($this->extra && isset($this->extra['tool-resolver'])) {
+        if ($this->extra && isset($this->extra['tool-resolver'])) {
             $relative = $this->extra['tool-resolver']['relative'] ?? true;
             $map = $this->extra['tool-resolver']['resolves'] ?? [];
 

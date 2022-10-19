@@ -5,7 +5,7 @@ namespace Envorra\Tools\Common\Contracts\Flags;
 /**
  * Flag
  *
- * @package Envorra\Tools\Contracts\Flags
+ * @package  Envorra\Tools\Contracts\Flags
  *
  * @template TValue
  *

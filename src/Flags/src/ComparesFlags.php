@@ -16,7 +16,7 @@ trait ComparesFlags
      */
     public function is(mixed $flag): bool
     {
-        if($flag instanceof FlagContract) {
+        if ($flag instanceof FlagContract) {
             $flag = $flag->value;
         }
 
@@ -28,8 +28,8 @@ trait ComparesFlags
      */
     public function isIn(array $flags): bool
     {
-        foreach($flags as $flag) {
-            if($this->is($flag)) {
+        foreach ($flags as $flag) {
+            if ($this->is($flag)) {
                 return true;
             }
         }

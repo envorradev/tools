@@ -10,6 +10,19 @@ use Envorra\Tools\Filesystem\Path;
 use Envorra\Tools\Composer\PackageFinder;
 use Envorra\Tools\Composer\ComposerSchema;
 use Envorra\Tools\Composer\Exceptions\UnexpectedFileException;
+use function in_array;
+use function array_map;
+use function array_keys;
+use function strtolower;
+use function array_merge;
+use function str_replace;
+use function array_values;
+use function str_contains;
+use function preg_replace;
+use function array_combine;
+use function str_ends_with;
+use function method_exists;
+use function property_exists;
 
 /**
  * AbstractComposerPackage
@@ -41,7 +54,7 @@ abstract class AbstractComposerPackage
      */
     public function __construct(public readonly File $file)
     {
-        if (\strtolower($this->file->fileName) !== PackageFinder::COMPOSER_FILENAME) {
+        if (strtolower($this->file->fileName) !== PackageFinder::COMPOSER_FILENAME) {
             throw new UnexpectedFileException('Invalid composer file');
         }
 
@@ -77,11 +90,11 @@ abstract class AbstractComposerPackage
      */
     public function __call(string $method, array $arguments): mixed
     {
-        if (\method_exists($this->file, $method)) {
+        if (method_exists($this->file, $method)) {
             return $this->file->$method(...$arguments);
         }
 
-        if (\method_exists($this->json, $method)) {
+        if (method_exists($this->json, $method)) {
             return $this->json->$method(...$arguments);
         }
 
@@ -98,18 +111,18 @@ abstract class AbstractComposerPackage
             return $this->path();
         }
 
-        if (\in_array($property, $this->schema->properties())) {
+        if (in_array($property, $this->schema->properties())) {
             return $this->json->$property;
         }
 
-        if (\property_exists($this->file, $property)) {
+        if (property_exists($this->file, $property)) {
             return $this->file->$property;
         }
 
-        $property = \strtolower(\preg_replace('/([A-Z])/', '_$1', $property));
+        $property = strtolower(preg_replace('/([A-Z])/', '_$1', $property));
 
-        if (\str_contains($property, '_')) {
-            return $this->__get(\str_replace('_', '-', $property));
+        if (str_contains($property, '_')) {
+            return $this->__get(str_replace('_', '-', $property));
         }
 
         return null;
@@ -120,7 +133,7 @@ abstract class AbstractComposerPackage
      */
     public function autoloaded(): array
     {
-        return \array_merge(
+        return array_merge(
             $this->get('autoload.psr-4') ?? [],
             $this->get('autoload.psr-0') ?? [],
             $this->get('autoload-dev.psr-4') ?? [],
@@ -134,7 +147,7 @@ abstract class AbstractComposerPackage
      */
     public function get(string|int $key): mixed
     {
-        if (\property_exists($this, $key)) {
+        if (property_exists($this, $key)) {
             return $this->$key;
         }
 
@@ -147,8 +160,8 @@ abstract class AbstractComposerPackage
      */
     public function hasNamespace(string $namespace): bool
     {
-        $namespace = \str_ends_with($namespace, '\\') ? $namespace : $namespace.'\\';
-        return \in_array($namespace, $this->namespaces());
+        $namespace = str_ends_with($namespace, '\\') ? $namespace : $namespace.'\\';
+        return in_array($namespace, $this->namespaces());
     }
 
     /**
@@ -165,7 +178,7 @@ abstract class AbstractComposerPackage
      */
     public function namespacePath(string $namespace): ?Path
     {
-        $namespace = \str_ends_with($namespace, '\\') ? $namespace : $namespace.'\\';
+        $namespace = str_ends_with($namespace, '\\') ? $namespace : $namespace.'\\';
         if ($this->hasNamespace($namespace)) {
             return $this->namespacePathMap()[$namespace];
         }
@@ -177,7 +190,7 @@ abstract class AbstractComposerPackage
      */
     public function namespacePathMap(): array
     {
-        return \array_combine($this->namespaces(), $this->paths());
+        return array_combine($this->namespaces(), $this->paths());
     }
 
     /**
@@ -194,7 +207,7 @@ abstract class AbstractComposerPackage
      */
     public function namespaceRealPathMap(): array
     {
-        return \array_combine($this->namespaces(), $this->realPaths());
+        return array_combine($this->namespaces(), $this->realPaths());
     }
 
     /**
@@ -202,7 +215,7 @@ abstract class AbstractComposerPackage
      */
     public function namespaces(): array
     {
-        return \array_keys($this->autoloaded());
+        return array_keys($this->autoloaded());
     }
 
     /**
@@ -218,9 +231,9 @@ abstract class AbstractComposerPackage
      */
     public function paths(): array
     {
-        return \array_map(
+        return array_map(
             callback: fn(string $path) => new Path($path, $this->file->path),
-            array: \array_values($this->autoloaded())
+            array: array_values($this->autoloaded())
         );
     }
 
@@ -229,7 +242,7 @@ abstract class AbstractComposerPackage
      */
     public function realPaths(): array
     {
-        return \array_map(fn(Path $path) => $path->realPath, $this->paths());
+        return array_map(fn(Path $path) => $path->realPath, $this->paths());
     }
 
     /**
@@ -237,6 +250,6 @@ abstract class AbstractComposerPackage
      */
     public function requirements(): array
     {
-        return \array_merge($this->get('require') ?? [], $this->get('require-dev') ?? []);
+        return array_merge($this->get('require') ?? [], $this->get('require-dev') ?? []);
     }
 }

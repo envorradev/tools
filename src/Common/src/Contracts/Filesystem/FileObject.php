@@ -22,9 +22,11 @@ interface FileObject extends ConvertsToString
     public function __construct(SplFileInfo|string|null $fileInfo = null);
 
     /**
-     * @return SplFileInfo
+     * @param  string  $method
+     * @param  array   $arguments
+     * @return mixed
      */
-    public function info(): SplFileInfo;
+    public function __call(string $method, array $arguments): mixed;
 
     /**
      * @return string|null
@@ -32,9 +34,7 @@ interface FileObject extends ConvertsToString
     public function contents(): string|null;
 
     /**
-     * @param  string  $method
-     * @param  array   $arguments
-     * @return mixed
+     * @return SplFileInfo
      */
-    public function __call(string $method, array $arguments): mixed;
+    public function info(): SplFileInfo;
 }

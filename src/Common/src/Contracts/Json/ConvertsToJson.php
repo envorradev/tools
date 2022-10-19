@@ -17,12 +17,12 @@ interface ConvertsToJson extends JsonSerializable
     public function toJson(): string;
 
     /**
-     * @return string
-     */
-    public function toPrettyJson(): string;
-
-    /**
      * @return JsonDataObject
      */
     public function toJsonObject(): JsonDataObject;
+
+    /**
+     * @return string
+     */
+    public function toPrettyJson(): string;
 }

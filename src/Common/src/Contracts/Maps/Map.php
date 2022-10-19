@@ -10,7 +10,7 @@ use IteratorAggregate;
 /**
  * Map
  *
- * @package Envorra\Tools\Contracts\Maps
+ * @package  Envorra\Tools\Contracts\Maps
  *
  * @template TKey of array-key
  * @template TValue
@@ -18,9 +18,10 @@ use IteratorAggregate;
 interface Map extends ArrayAccess, IteratorAggregate, Countable, JsonSerializable
 {
     /**
-     * @return array<TKey, TValue>
+     * @param  mixed  $item
+     * @return bool
      */
-    public function map(): array;
+    public function exists(mixed $item): bool;
 
     /**
      * @param  mixed  $item
@@ -29,10 +30,10 @@ interface Map extends ArrayAccess, IteratorAggregate, Countable, JsonSerializabl
     public function find(mixed $item): mixed;
 
     /**
-     * @param  mixed  $item
-     * @return bool
+     * @param  TValue  $item
+     * @return TKey|null
      */
-    public function exists(mixed $item): bool;
+    public function getKey(mixed $item): mixed;
 
     /**
      * @param  TKey  $key
@@ -40,10 +41,8 @@ interface Map extends ArrayAccess, IteratorAggregate, Countable, JsonSerializabl
      */
     public function keyExists(string|int $key): bool;
 
-
     /**
-     * @param  TValue  $item
-     * @return TKey|null
+     * @return array<TKey, TValue>
      */
-    public function getKey(mixed $item): mixed;
+    public function map(): array;
 }

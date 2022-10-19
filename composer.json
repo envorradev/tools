@@ -1,11 +1,18 @@
 {
     "name": "envorradev/tools",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../git-helper"
+        }
+    ],
     "require": {
         "php": "^8.1"
     },
     "require-dev": {
         "ramsey/composer-repl": "^1.4",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "envorradev/git-helper": "dev-main"
     },
     "autoload": {
         "files": [
@@ -16,7 +23,6 @@
             "Envorra\\Tools\\Common\\": "src/Common/src/",
             "Envorra\\Tools\\Flags\\": "src/Flags/src/",
             "Envorra\\Tools\\Arrays\\": "src/Arrays/src/",
-            "Envorra\\Tools\\Maps\\": "src/Maps/src/",
             "Envorra\\Tools\\Filesystem\\": "src/Filesystem/src/",
             "Envorra\\Tools\\Composer\\": "src/Composer/src/",
             "Envorra\\Tools\\Json\\": "src/Json/src/"

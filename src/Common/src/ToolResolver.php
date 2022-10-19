@@ -8,6 +8,8 @@ use Composer\InstalledVersions;
 use Envorra\Tools\Composer\PackageFinder;
 use Envorra\Tools\Common\Exceptions\ToolNotFoundException;
 use Envorra\Tools\Common\Exceptions\ToolResolutionException;
+use function array_merge;
+use function array_key_exists;
 
 /**
  * ToolResolver
@@ -21,8 +23,8 @@ class ToolResolver
      */
     public function __construct(protected array $map = [])
     {
-        if($this->hasComposerTool()) {
-            $this->map = \array_merge($this->map, PackageFinder::getResolutionMap());
+        if ($this->hasComposerTool()) {
+            $this->map = array_merge($this->map, PackageFinder::getResolutionMap());
         }
     }
 
@@ -63,7 +65,7 @@ class ToolResolver
      */
     public function resolvable(string $abstract): bool
     {
-        return \array_key_exists($abstract, $this->map);
+        return array_key_exists($abstract, $this->map);
     }
 
     /**
@@ -79,7 +81,7 @@ class ToolResolver
         }
 
         try {
-            if((new ReflectionClass($abstract))->isInstantiable()) {
+            if ((new ReflectionClass($abstract))->isInstantiable()) {
                 return $abstract;
             }
         } catch (ReflectionException) {

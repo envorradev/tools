@@ -25,9 +25,21 @@ class RootPackage extends AbstractComposerPackage
         parent::__construct($file);
         $this->dev = $this->rawPackageData['dev'] ?? false;
 
-        if(!$this->isRootPackage) {
+        if (!$this->isRootPackage) {
             throw new Exception($this->name.' is not the root package!');
         }
+    }
+
+    /**
+     * @param  string  $packageName
+     * @return ComposerPackage|null
+     */
+    public function getPackage(string $packageName): ?ComposerPackage
+    {
+        if ($this->packageFinder->installed($packageName)) {
+            return $this->packageFinder->find($packageName);
+        }
+        return null;
     }
 
     /**
@@ -45,17 +57,5 @@ class RootPackage extends AbstractComposerPackage
     public function hasPackage(string $packageName): bool
     {
         return $this->packageFinder->installed($packageName);
-    }
-
-    /**
-     * @param  string  $packageName
-     * @return ComposerPackage|null
-     */
-    public function getPackage(string $packageName): ?ComposerPackage
-    {
-        if($this->packageFinder->installed($packageName)) {
-            return $this->packageFinder->find($packageName);
-        }
-        return null;
     }
 }
