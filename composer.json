@@ -1,15 +1,29 @@
 {
     "name": "envorradev/tools",
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Sam Taylor",
+            "email": "15961687+samueljtaylor@users.noreply.github.com"
+        }
+    ],
     "require": {
         "php": "^8.1"
     },
     "require-dev": {
-        "ramsey/composer-repl": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "envorradev/git-helper": "^0.1.1"
+        "ramsey/composer-repl": "^1.4",
+        "symplify/monorepo-builder": "^11.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Envorra\\Tools\\": "src/",
+            "Envorra\\Tools\\Arrays\\": "src/Arrays/src/",
+            "Envorra\\Tools\\Common\\": "src/Common/src/",
+            "Envorra\\Tools\\Composer\\": "src/Composer/src/",
+            "Envorra\\Tools\\Filesystem\\": "src/Filesystem/src/",
+            "Envorra\\Tools\\Flags\\": "src/Flags/src/",
+            "Envorra\\Tools\\Json\\": "src/Json/src/"
+        }
     },
     "replace": {
         "envorradev/tool-arrays": "self.version",
@@ -19,31 +33,6 @@
         "envorradev/tool-flags": "self.version",
         "envorradev/tool-json": "self.version"
     },
-    "autoload": {
-        "psr-4": {
-            "Envorra\\Tools\\": "src/",
-            "Envorra\\Tools\\Common\\": "src/Common/src/",
-            "Envorra\\Tools\\Flags\\": "src/Flags/src/",
-            "Envorra\\Tools\\Arrays\\": "src/Arrays/src/",
-            "Envorra\\Tools\\Filesystem\\": "src/Filesystem/src/",
-            "Envorra\\Tools\\Composer\\": "src/Composer/src/",
-            "Envorra\\Tools\\Json\\": "src/Json/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Envorra\\Tools\\Tests\\": "tests/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Sam Taylor",
-            "email": "15961687+samueljtaylor@users.noreply.github.com"
-        }
-    ],
-    "config": {
-        "allow-plugins": {
-            "ramsey/composer-repl": true
-        }
-    }
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
